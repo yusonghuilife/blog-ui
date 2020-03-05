@@ -1,0 +1,105 @@
+
+/***********************
+模块名：配色参数
+************************/
+
+
+/***********************
+design tokens：配色参数
+************************/
+/* Color */
+$color-brand1         : #0081ef !default;
+$color-brand1-hover   : #28a1fc !default;
+$color-brand1-disabled: #a3e0ff !default;
+$color-brand1-cur     : #0065c9 !default;
+
+$color-white      : #fff !default;
+$color-black      : #000 !default;
+$color-transparent: transparent !default;
+
+
+$color-success    : #00caa0 !default;
+$color-success-1  : #def5f4 !default;
+$color-success-2  : #85e4d2 !default;          // 成功色-hover
+$color-success-3  : #5bc6a2 !default;          // 成功色-normal
+$color-success-4  : #42a184 !default;          // 成功色-active
+
+$color-error      : #f52d2c !default;
+$color-error-1    : #f7e9eb !default;
+$color-error-2    : #f8b4b5 !default;          // 出错-hover
+$color-error-3    : #e85e59 !default;          // 出错-normal
+$color-error-4    : #c24040 !default;          // 出错-active
+
+
+$color-warning:#ffca4c !default;//用于警告或者强调
+$color-warning-1: #FFF3E0 !default;
+$color-warning-2: #FFE6BD !default;
+$color-warning-3: #FF9300 !default;
+$color-warning-4: #EB7E10 !default;
+
+$color-text-1 : #333 !default;                    //主：标题
+$color-text-2 : #666 !default;                    //次：描述
+$color-text-3 : #999 !default;                    //辅助
+$color-text-4 : #ccc !default;                    //不可点击
+$color-text-hint: #909090 !default;
+$color-text   : $color-text-1 !default;
+
+
+$color-line-1: #e2e5f0 !default;  //边框默认
+$color-line-2: #c4c6cf !default;  //模块分割线
+$color-line-3: #a0a2ad !default;  //边框hover态
+$color-line-4: #e6e7eb !default;  //边框disabled
+$color-line  : $color-line-1;
+
+
+$color-fill-1: #a9a9a9 !default;  //#e8eef8;         //白底下拉列表hover底色
+$color-fill-2: #b9b9b9 !default;  //#c3d3eb;         //导航底
+$color-fill-3: #d2d2d2 !default;  //#dce9f4;         //灰色底默认  舞台下方属性功能底
+$color-fill-4: #f7f7f7 !default;  //#cedeeb;         //灰色底下拉列表hover
+$color-fill  : $color-fill-1;
+
+
+/* Font */
+$font-family-base    : "Helvetica Neue", "Helvetica",       "Arial",       "PingFang SC", "Microsoft YaHei", "微软雅黑",            "sans-serif" !default;
+$font-family-en      : "Helvetica Neue", "Helvetica",       "Arial" !default;
+$font-family-zh      : "PingFang SC",    "Microsoft YaHei", "微软雅黑",        "sans-serif" !default;
+$font-family-code    : "Monaco",         "Menlo",           "Ubuntu Mono", "Consolas",    "PingFang SC",     "Microsoft YaHei", "微软雅黑", "sans-serif" !default;
+$font-lineheight-s   : 1.3 !default;
+$font-lineheight-base: 1.5 !default;
+$font-lineheight-l   : 1.7 !default;
+$font-size-xxs       : 0.5rem !default;
+$font-size-xs        : 0.5rem !default;
+$font-size-s         : 0.75rem !default;
+$font-size-base      : 0.875rem !default;
+$font-size-l         : 1rem !default;//16px = 1rem
+$font-size-xl        : 1.125rem !default;
+$font-size-xxl       : 1.375rem !default;
+$font-size-xxxl      : 1.5rem !default;
+/* Size */
+$s-base: 0.25rem !default; //4px 4px/16px
+$s-1   : $s-base !default;
+/* Shadow */
+$shadow-color: rgba(0, 0, 0, 0.15) !default;
+$shadow-0    : none !default;
+$shadow-1    : 0 0.125rem 0.5rem rgba(0, 0, 0, 0.15) !default;
+$shadow-2    : 0 0.25rem 0.75rem rgba(0,0,0,.15) !default;
+/* Corner */
+$corner-1     : $s-base !default;
+$corner-2     : 1.5*$s-base !default;
+$corner-3     : 5*$s-base !default;
+$corner-circle: 50% !default;
+$corner-0     : 0 !default;
+/* Line */
+$line-0: 0 !default;
+$line-1: 0.0625rem !default;
+$line-2: 0.125rem !default;
+$line-3: 0.1875rem !default;
+
+$transition-0    : none !default;
+$transition-1    : all 0.2s !default;
+/* Global */
+
+$class-prefix: ".bui";
+$css-prefix: "#{str-slice($class-prefix, 2)}-";
+$cursor-disabled     : not-allowed !default;
+$scrollbar-margin:0.5*$s-base !default;

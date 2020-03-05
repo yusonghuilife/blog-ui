@@ -1,0 +1,371 @@
+// mixins for clearfix
+// ------------------------
+@mixin clearfix() {
+  zoom: 1;
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// mixins for ellipsis
+// ------------------------
+//单行截断
+@mixin ellipsis($width:auto) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: $width;
+}
+
+//多行截断
+@mixin ellipsisLine($line) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+// Placeholder text
+@mixin placeholder($color: rgba(0,0,0,0.2)) {
+  // Firefox
+  &::-moz-placeholder {
+    color: $color;
+    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+  }
+  // Internet Explorer 10+
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+  // Safari and Chrome
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+}
+
+
+@mixin align-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+
+  &:before,
+  &:after {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+  }
+}
+
+// x轴原点
+@mixin align-flex-start {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start
+}
+
+// x轴居中
+@mixin align-flex-center {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center
+}
+
+// x轴反方向
+@mixin align-flex-end {
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end
+}
+
+// x轴平分
+@mixin align-flex-space-between {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between
+}
+
+// x轴有间隔地平分
+@mixin align-flex-space-around {
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around
+}
+
+// 顶部对齐
+@mixin align-flex-top {
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start
+}
+
+// 居中对齐
+@mixin align-flex-middle {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center
+}
+
+// 底部对齐
+@mixin align-flex-bottom {
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end
+}
+
+//retina 1px fixed
+/**
+* @desc 列表是否存在
+*/
+@function contain($list, $value) {
+  @return not not index($list, $value);
+}
+
+/**
+* @param $color
+* @param $direction: top bottom left right vertical all radius,  default: all
+*/
+@mixin _border($color, $direction: all, $radius: 1px) {
+  $list: top bottom left right;
+  $vaue: 1px solid $color;
+  @if $color==0 {
+    $vaue: 0;
+  }
+  @if contain($list, $direction) {
+    border-#{$direction}: $vaue;
+  } @else if $direction==vertical {
+    border-top: $vaue;
+    border-bottom: $vaue;
+  } @else {
+    border: $vaue;
+    @if $direction==radius {
+      border-radius: $radius;
+    }
+  }
+}
+
+/**
+* @param $color
+* @param $direction: top bottom left right vertical all radius,  default: all
+* @param $pseudo: after before, default: after
+* @param $radius default: 1px
+*/
+@mixin onePxScale($color, $direction: all, $pseudo: after, $radius: 1px) {
+  $list: top bottom left right;
+  @include _border($color, $direction, $radius);
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    position: relative;
+    @include _border(0, $direction);
+    @if $direction==all or $direction==radius {
+      overflow: hidden;
+    }
+    &:#{$pseudo} {
+      content: " ";
+      position: absolute;
+      display: block;
+      z-index: 5;
+      pointer-events: none;
+
+      @if contain($list, $direction) {
+        background-color: $color;
+      }
+
+      @if $direction==top or $direction==bottom {
+        left: 0;
+        right: 0;
+        height: 1px;
+        width: 100%;
+        -webkit-transform: scaleY(.5);
+        transform: scaleY(.5);
+        @if $direction==top {
+          top: 0;
+        } @else {
+          bottom: 0;
+        }
+
+      } @else if $direction==left or $direction==right {
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        height: 100%;
+        -webkit-transform: scaleX(.5);
+        transform: scaleX(.5);
+
+        @if $direction==left {
+          left: 0;
+        } @else {
+          right: 0;
+        }
+      } @else {
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 200%;
+        @include _border($color, $direction, $radius);
+        -webkit-transform: scale(.5);
+        transform: scale(.5);
+        box-sizing: border-box;
+      }
+
+      @if $direction==bottom or $direction==right {
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+      } @else {
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+      }
+    }
+  }
+  @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+    position: relative;
+    @include _border(0, $direction);
+    @if $direction==all or $direction==radius {
+      overflow: hidden;
+    }
+    &:#{$pseudo} {
+      content: " ";
+      position: absolute;
+      display: block;
+      z-index: 5;
+      pointer-events: none;
+
+      @if contain($list, $direction) {
+        background-color: $color;
+      }
+
+      @if $direction==top or $direction==bottom {
+        left: 0;
+        right: 0;
+        height: 1px;
+        width: 100%;
+        -webkit-transform: scaleY(.3333);
+        transform: scaleY(.3333);
+        @if $direction==top {
+          top: 0;
+        } @else {
+          bottom: 0;
+        }
+
+      } @else if $direction==left or $direction==right {
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        height: 100%;
+        -webkit-transform: scaleX(.3333);
+        transform: scaleX(.3333);
+
+        @if $direction==left {
+          left: 0;
+        } @else {
+          right: 0;
+        }
+      } @else {
+        top: 0;
+        left: 0;
+        width: 300%;
+        height: 300%;
+        @include _border($color, $direction, $radius);
+        -webkit-transform: scale(.3333);
+        transform: scale(.3333);
+        box-sizing: border-box;
+      }
+
+      @if $direction==bottom or $direction==right {
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+      } @else {
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+      }
+    }
+  }
+}
+
+/**
+* onePx using background-image linear-gradient
+* @param $color
+* @param $direction: top bottom left right vertical all radius,  default: all
+*/
+
+@mixin onePx($color, $direction: all) {
+  @if $direction==top or $direction==bottom {
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-image: linear-gradient($color, $color);
+  }
+  @if $direction==top {
+    border-top: none;
+    background-position: top;
+  } @else if $direction==bottom {
+    border-bottom: none;
+    background-position: bottom;
+  }
+  @if $direction==left or $direction==right {
+    background-size: 1px 100%;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(90deg, $color, $color);
+  } @else if $direction==left {
+    border-left: none;
+    background-position: left;
+  } @else if $direction==right {
+    border-right: none;
+    background-position: right;
+  } @else if $direction==vertical {
+    border: none;
+    background-size: 100% 1px, 100% 1px;
+    background-repeat: no-repeat;
+    background-position: bottom, top;
+    background-image: linear-gradient($color, $color), linear-gradient($color, $color);
+  } @else if $direction==topleft {
+    border: none;
+    background-size: 100% 1px, 1px 100%;
+    background-repeat: no-repeat;
+    background-position: top, left;
+    background-image: linear-gradient($color, $color), linear-gradient(90deg, $color, $color 100%);
+  } @else if $direction==all {
+    border: none;
+    background-size: 100% 1px, 1px 100%, 100% 1px, 1px 100%;
+    background-repeat: no-repeat;
+    background-position: top, right, bottom, left;
+    background-image: linear-gradient($color, $color), linear-gradient(90deg, $color, $color 100%), linear-gradient($color, $color), linear-gradient(90deg, $color, $color 100%);
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+    @if $direction==top {
+      //background-image: linear-gradient(0deg, transparent, transparent 50%, $color 50%);
+      background-image: linear-gradient(180deg, $color, $color 50%, transparent 50%);
+    }
+    @if $direction==bottom {
+      background-image: linear-gradient(0deg, $color, $color 50%, transparent 50%);
+    } @else if $direction==left or $direction==right {
+      background-image: linear-gradient(90deg, transparent, transparent 50%, $color 50%);
+    } @else if $direction==vertical {
+      background-image: linear-gradient(0deg, $color, $color 50%, transparent 50%), linear-gradient(180deg, $color, $color 50%, transparent 50%);
+    } @else if $direction==topleft {
+      //background-image: linear-gradient(0deg, transparent, transparent 50%, $color 50%),linear-gradient(90deg, transparent, transparent 50%, $color 50%);
+      background-image: linear-gradient(180deg, $color, $color 50%, transparent 50%), linear-gradient(270deg, transparent, transparent 50%, $color 50%);
+    } @else if $direction==all {
+      //top, right, bottom, left
+      background-image: linear-gradient(180deg, $color, $color 50%, transparent 50%), linear-gradient(90deg, transparent, transparent 50%, $color 50%), linear-gradient(0deg, $color, $color 50%, transparent 50%), linear-gradient(270deg, transparent, transparent 50%, $color 50%);
+    }
+  }
+}

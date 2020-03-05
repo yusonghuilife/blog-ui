@@ -1,0 +1,60 @@
+@import "./variable.scss";
+*{-webkit-tap-highlight-color: rgba(0, 0, 0, 0);-webkit-touch-callout:none;}
+/*不要重置鼠标样式*/
+body,h1,h2,h3,h4,h5,h6,hr,p,pre,dl,dt,dd,ul,ol,li,th,td,form,fieldset,legend,button,input,textarea,figure,figcaption,nav,footer,menu,blockquote{margin:0;padding:0;/*cursor:default;*/}
+/*改变所有元素的盒模型*/
+*,*:after,*:before{box-sizing:border-box;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+
+/*这些标签的font-style是否不要重置？会影响编辑器中的样式*/
+address,em,i,b{font-style:normal;}
+
+a:link,a:visited,a:hover,a:active{text-decoration:none;}
+ul,ol,li{list-style:none;}
+img{border:0;font-size:0;-webkit-user-select:none;vertical-align:middle;}
+:focus,button,input,select,textarea{outline:none;}
+textarea,input,select{-webkit-appearance:none;appearance:none;}
+textarea,input{background:none;-webkit-border-radius:0;border-radius:0;resize:none;cursor:text;}
+table{/*table-layout: fixed;width:100%;*/border-spacing:0;border-collapse:collapse;}
+a,img{-webkit-user-drag:none;}
+button{background:none;border:0;cursor:pointer;}
+body{word-wrap:break-word;}
+::-webkit-input-placeholder,body,button,input,textarea,select{
+    //font-family:Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif;
+    font-family:$font-family-base;
+    font-size:$font-size-base;line-height:$font-lineheight-base;}
+
+/*滚动条*/
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-thumb{border-radius:2px;}
+/*深色滚动条 用在浅色背景的页面上*/
+::-webkit-scrollbar-thumb{background-color:rgba($color-black,0.2);}
+::-webkit-scrollbar-thumb:hover{background-color: rgba( $color-black,0.3);}
+::-webkit-scrollbar-thumb:active{background-color:  rgba($color-black,0.6);}
+/*浅色滚动条 用在深色背景的页面上 追加在body标签上*/
+.mwe-scrollbar--light::-webkit-scrollbar-thumb{background-color:rgba($color-white,0.3);}
+.mwe-scrollbar--light::-webkit-scrollbar-thumb:hover{background-color: rgba($color-white,0.6);}
+
+/*状态原子类*/
+/*选中、当前*/
+.cur{}
+/*下拉菜单选中*/
+.selected{}
+/*显示*/
+.show{}
+/*隐藏*/
+.hide{}
+/*展开*/
+.expand{}
+/*不可用*/
+.disabled{}
+/*错误*/
+.error{}
+/*成功*/
+.success{}
+/*警告*/
+.wran{}
+/*可点击*/
+.clickable{}
+/*固定定位*/
+.fixed{}
