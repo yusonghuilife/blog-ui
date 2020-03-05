@@ -43,5 +43,5 @@ demo在项目examples文件夹下，clone项目运行后即可看到效果
 
 展示demo完全使用该UI组件完成
 
-![image-20200305162145423](/Users/yusonghu/Library/Application Support/typora-user-images/image-20200305162145423.png)
+![image-20200305162145423](https://upload-images.jianshu.io/upload_images/3289487-9e6ee51676a3127e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
