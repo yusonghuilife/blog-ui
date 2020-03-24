@@ -56,7 +56,6 @@
 
 <script>
 import mixinBase from "../mixins/base";
-import mixinEmitter from "../mixins/emitter";
 import { go } from '../../utils/router';
 import BUIcon from "../icon";
 
@@ -65,7 +64,7 @@ export default {
   components: {
     BUIcon
   },
-  mixins: [mixinBase, mixinEmitter],
+  mixins: [mixinBase],
   props: {
     title: [String, Number],
     value: [String, Number],
@@ -130,7 +129,7 @@ export default {
   $cell-title-color    : $color-text-1 !default;
   $cell-title-font-size: $font-size-l !default;
   $cell-title-padding  : $s-1*2 !default;
-  $cell-desc-color     : $color-text-hint !default;
+  $cell-desc-color     :  $color-text-hint !default;
   $cell-desc-font-size : $font-size-base/2 !default;
   $cell-desc-padding   : 0 !default;
 
@@ -203,13 +202,6 @@ export default {
       }
       &:active{
         background-color: $cell-access-bg-color-active;
-      }
-    }
-    &--media{
-      #{$cell-prefix}-hd{
-        img{
-
-        }
       }
     }
     &--disabled{

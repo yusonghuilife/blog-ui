@@ -59,11 +59,6 @@ $color-fill-4: #f7f7f7 !default;  //#cedeeb;         //灰色底下拉列表hove
 $color-fill  : $color-fill-1;
 
 
-/* Font */
-$font-family-base    : "Helvetica Neue", "Helvetica",       "Arial",       "PingFang SC", "Microsoft YaHei", "微软雅黑",            "sans-serif" !default;
-$font-family-en      : "Helvetica Neue", "Helvetica",       "Arial" !default;
-$font-family-zh      : "PingFang SC",    "Microsoft YaHei", "微软雅黑",        "sans-serif" !default;
-$font-family-code    : "Monaco",         "Menlo",           "Ubuntu Mono", "Consolas",    "PingFang SC",     "Microsoft YaHei", "微软雅黑", "sans-serif" !default;
 $font-lineheight-s   : 1.3 !default;
 $font-lineheight-base: 1.5 !default;
 $font-lineheight-l   : 1.7 !default;
@@ -75,21 +70,21 @@ $font-size-l         : 1rem !default;//16px = 1rem
 $font-size-xl        : 1.125rem !default;
 $font-size-xxl       : 1.375rem !default;
 $font-size-xxxl      : 1.5rem !default;
-/* Size */
+
 $s-base: 0.25rem !default; //4px 4px/16px
 $s-1   : $s-base !default;
-/* Shadow */
+
 $shadow-color: rgba(0, 0, 0, 0.15) !default;
 $shadow-0    : none !default;
 $shadow-1    : 0 0.125rem 0.5rem rgba(0, 0, 0, 0.15) !default;
 $shadow-2    : 0 0.25rem 0.75rem rgba(0,0,0,.15) !default;
-/* Corner */
+
 $corner-1     : $s-base !default;
 $corner-2     : 1.5*$s-base !default;
 $corner-3     : 5*$s-base !default;
 $corner-circle: 50% !default;
 $corner-0     : 0 !default;
-/* Line */
+
 $line-0: 0 !default;
 $line-1: 0.0625rem !default;
 $line-2: 0.125rem !default;
@@ -97,7 +92,6 @@ $line-3: 0.1875rem !default;
 
 $transition-0    : none !default;
 $transition-1    : all 0.2s !default;
-/* Global */
 
 $class-prefix: ".bui";
 $css-prefix: "#{str-slice($class-prefix, 2)}-";

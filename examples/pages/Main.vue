@@ -6,7 +6,7 @@
                         v-for="(item, index) in tabNavList.list"
                         :key="index"
                 >{{ item }}
-                    <BUBadge v-if="index === 1" text="88"></BUBadge>
+                    <BUBadge v-if="index === 1" text="9"></BUBadge>
                 </BUTabNavItem>
             </BUTabnav>
         </div>

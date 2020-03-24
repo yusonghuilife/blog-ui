@@ -28,18 +28,17 @@
 
 <script>
 import mixinBase from "../mixins/base";
-import mixinEmitter from "../mixins/emitter";
 import BUIcon from '../icon'
 export default {
   name: "BUButton",
   components: {
     BUIcon
   },
-  mixins: [mixinBase, mixinEmitter],
+  mixins: [mixinBase],
   props: {
     type: {
       type: String,
-      // validator: val => ['default', 'primary','text'].indexOf(val) > -1
+      validator: val => ['default', 'primary','text'].indexOf(val) > -1
     },
     status:{
       type:String,
@@ -55,10 +54,6 @@ export default {
       default: false
     },
     loading: {
-      type: Boolean,
-      default: false
-    },
-    ghost: {
       type: Boolean,
       default: false
     },
@@ -86,7 +81,6 @@ export default {
         `${this.type ? `${this.pagePrefixCls}--${this.type}` : ""}`,
         `${this.status ? `${this.pagePrefixCls}--${this.status}` : ""}`,
         `${this.size ? `${this.pagePrefixCls}--${this.size}` : ""}`,
-        `${this.ghost ? `${this.pagePrefixCls}--ghost` : ""}`,
         `${this.circle && !this.$slots.default ? `${this.pagePrefixCls}--circle` : ""}`,
         `${this.full ? `${this.pagePrefixCls}--full` : ""}`,
         `${this.disabled ? `${this.pagePrefixCls}--disabled` : ""}`,
@@ -163,20 +157,7 @@ export default {
   $button-border-color-primary-hover : $color-brand1-hover !default;
   $button-border-color-primary-active: $color-brand1-cur !default;
 
-  //ghost 反色
-  $button-border-width-ghost       : $line-1 !default;
-  $button-color-ghost              : $color-white !default;
-  $button-color-ghost-primary      : $color-black !default;
-  $button-color-ghost-hover        : $color-white !default;
-  $button-color-ghost-active       : $color-white !default;
-  $button-bg-color-ghost           : rgba($color-white,0.6) !default;
-  $button-bg-color-ghost-hover     : $color-white !default;
-  $button-bg-color-ghost-active    : $color-white !default;
-  $button-border-color-ghost       : rgba($color-white,0.6) !default;
-  $button-border-color-ghost-hover : $color-white !default;
-  $button-border-color-ghost-active: $color-white !default;
-
-  //disabled 反色
+  //disabled
   $button-color-disabled               : $color-text-3 !default;
   $button-bg-color-disabled            : $color-white !default;
   $button-border-color-disabled        : $color-line-4 !default;
@@ -219,7 +200,7 @@ export default {
     &-loading{
       margin-right:$button-icon-margin;
       font-size: $button-font-size-base;
-      animation: loadingCircle 1s linear infinite;
+      animation: loadingCircle 2s linear infinite;
     }
 
     &:active {
@@ -241,12 +222,6 @@ export default {
       &:active {
         @include button-status($button-color-primary,$button-bg-color-primary-active,$button-border-color-primary-active);
       }
-      &#{$button-prefix}--ghost{
-        @include button-status($button-color-ghost-primary ,$button-bg-color-ghost,$button-border-color-ghost);
-        &:hover{
-          @include button-status($button-color-ghost-primary,$button-bg-color-ghost-hover,$button-border-color-ghost-hover);
-        }
-      }
       &.disabled,
       &.disabled:hover,
       &.disabled:active,
@@ -259,12 +234,6 @@ export default {
         color: $button-color-primary-disabled;
       }
     }
-    &--ghost{
-      @include button-status($button-color-ghost,transparent,$button-border-color-ghost);
-      &:active {
-        @include button-status($button-color-primary,$button-bg-color-primary-active,$button-border-color-primary-active);
-      }
-    }
     &--error{
       @include button-status($button-color-error,$button-bg-color-error,$button-border-color-error);
       // &:hover {
@@ -272,12 +241,6 @@ export default {
       // }
       &:active {
         @include button-status($button-color-error,$button-bg-color-error-active,$button-border-color-error-active);
-      }
-      &#{$button-prefix}--ghost{
-        @include button-status($button-color-ghost,$button-bg-color-ghost,$button-border-color-ghost);
-        &:hover{
-          @include button-status($button-color-ghost-hover,$button-bg-color-ghost-hover,$button-border-color-ghost-hover);
-        }
       }
       &.disabled,
       &.disabled:hover,

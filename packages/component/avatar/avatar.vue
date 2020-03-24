@@ -20,7 +20,6 @@
 
 <script>
 import mixinBase from "../mixins/base";
-import mixinEmitter from "../mixins/emitter";
 import BUIcon from "../icon";
 import BUBadge from "../badge"
 export default {
@@ -34,11 +33,11 @@ export default {
       srcToShow : ''
     }
   },
-  mixins: [mixinBase, mixinEmitter],
+  mixins: [mixinBase],
   props: {
     src: {
       type:String,
-      // required: true
+      required: true
     },
     shape: {
       type: String,
@@ -55,10 +54,6 @@ export default {
     },//s、l
     badge: String,
     icon: String,
-    status: {
-      type: String,
-      validator: val => ['online', 'offline', 'ongame'].indexOf(val) > -1
-    },//online offline ongame
     onerror: {
       type: [String,Function]
     }
@@ -114,8 +109,8 @@ export default {
   $avatar-icon-bg-color : rgba($color-black,0.8) !default;
   $avatar-icon-color    : $color-white !default;
   $avatar-icon-font-size: $font-size-s !default;
-  $avatar-sup-top             : -$s-1*1 !default;
-  $avatar-sup-right           : -$s-1*2 !default;
+  $avatar-sup-top       : -$s-1*1 !default;
+  $avatar-sup-right     : -$s-1*2 !default;
 
 
 

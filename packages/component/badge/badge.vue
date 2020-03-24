@@ -7,11 +7,10 @@
 
 <script>
   import mixinBase from "../mixins/base";
-  import mixinEmitter from "../mixins/emitter";
 
   export default {
     name: "BUBadge",
-    mixins: [mixinBase, mixinEmitter],
+    mixins: [mixinBase],
     props: {
       text: {
         type: [String, Number],
@@ -45,7 +44,6 @@
 
     /* Badge */
     $badge-prefix: '.' + $css-prefix + 'badge';
-
     $badge-bg-color: $color-error !default;
     $badge-color: $color-white !default;
     $badge-font-size: $font-size-s !default;
@@ -82,10 +80,11 @@
 
         &--dot {
             padding: 0;
-            width: $badge-dot-width;
-            height: $badge-dot-width;
-            font-size: 0;
+            width: $badge-dot-width * 1.5;
+            height: $badge-dot-width * 1.5;
+            font-size: $badge-font-size;
             border-radius: $badge-dot-corner;
+            line-height: $badge-dot-width *1.5 ;
             box-sizing: border-box;
         }
     }

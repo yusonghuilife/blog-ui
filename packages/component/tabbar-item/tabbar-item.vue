@@ -24,7 +24,6 @@
 
 <script>
 import mixinBase from "../mixins/base";
-import mixinEmitter from "../mixins/emitter";
 import { go } from '../../utils/router';
 import BUBadge from "../badge";
 export default {
@@ -32,7 +31,7 @@ export default {
   components: {
     BUBadge,
   },
-  mixins: [mixinBase, mixinEmitter],
+  mixins: [mixinBase],
   props: {
     id: {
       type:[String, Number],

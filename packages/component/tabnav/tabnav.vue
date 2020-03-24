@@ -21,11 +21,10 @@
 
 <script>
   import mixinBase from "../mixins/base";
-  import mixinEmitter from "../mixins/emitter";
 
   export default {
   name: "BUTabnav",
-  mixins: [mixinBase, mixinEmitter],
+  mixins: [mixinBase],
   props: {
     value: {},
     customBarWidth: [Function, String],

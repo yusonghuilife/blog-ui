@@ -6,13 +6,12 @@
 
 <script>
 import mixinBase from "../mixins/base";
-import mixinEmitter from "../mixins/emitter";
 export default {
   name: "BUTabbar",
   components: {
 
   },
-  mixins: [mixinBase, mixinEmitter],
+  mixins: [mixinBase],
   props: {
     value: [String, Number],
     fixed: {

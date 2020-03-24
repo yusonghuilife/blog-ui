@@ -11,13 +11,12 @@
 
 <script>
 import mixinBase from "../mixins/base";
-import mixinEmitter from "../mixins/emitter";
 export default {
   name: "BUTabNavItem",
   components: {
 
   },
-  mixins: [mixinBase, mixinEmitter],
+  mixins: [mixinBase],
   props: {
     id: {
       type:[String, Number],
