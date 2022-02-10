@@ -12,7 +12,7 @@
     "lib": "vue-cli-service build --target lib --name vcolorpicker --dest lib packages/component/index.js"
   },
   "dependencies": {
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "vue": "^2.5.17",
     "vue-router": "^3.1.6"
   },
